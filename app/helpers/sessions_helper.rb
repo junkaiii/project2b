@@ -5,9 +5,14 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  # Get current user from session id
+  # Get current user from session id, always check from the latest session
   def current_user
-  @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  # check if passed user is current_user
+  def current_user?(user)
+    user == current_user
   end
 
   # Check if current user is nil
