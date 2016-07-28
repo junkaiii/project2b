@@ -9,9 +9,29 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li>
+          <%= link_to "Home", root_path %>
+        </li>
+        <% if logged_in? %> <!-- Already logged in --->
+          <li>
+            <%= link_to "Logout", logout_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign Up", new_user_path %>
+          </li>
+          <li>
+            <%= link_to "Log In", login_path %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
     <% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
