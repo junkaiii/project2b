@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :jobs, dependent: destroy #if user is deleted, all related job is deleted
   attr_accessor :remember_token
   before_save { email.downcase! }
 
