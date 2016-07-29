@@ -94,7 +94,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       unless current_user?(@user)
         flash[:danger] = "You are not authorised to view this page!"
-        redirect_to root
+        redirect_to root_url
       end
     end
 end
