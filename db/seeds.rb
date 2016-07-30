@@ -8,3 +8,21 @@
 User.create!(email: "junkaiii@gmail.com",
              password: "4480866l",
              admin: true)
+
+# Faker (delete if not needed)
+99.times do |n|
+               # name  = Faker::Name.name
+               email = "example-#{n+1}@railstutorial.org"
+               password = "password"
+               User.create!(
+                            email: email,
+                            password:              password,
+                            password_confirmation: password)
+end
+
+# # Faker (delete if not needed)
+# users = User.order(:created_at).take(6)
+# 50.times do
+#   content = Faker::Lorem.sentence(5)
+#   users.each { |user| user.jobs.create!(content: content) }
+# end
