@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   # check if correct user is logged in
   before_action :correct_user, only: [:show, :edit, :update]
 
-
-
   # GET /users
   # GET /users.json
   def index
@@ -84,8 +82,6 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-
-    # Filters
 
     # Confirms if a user is logged in
     def logged_in_user

@@ -1,2 +1,19 @@
+<% if logged_in? %>
+<div>
+  <h2>All available Jobs:</h2>
+  <div>
+      <section>
+        <%= render @jobshow %>
+        <%= will_paginate @jobshow %>
+      </section>
+
+  </div>
+</div>
+
+<% else %>
+
 <h1>Welcome!</h1>
 <p>This will be an awesome index page!</p>
+<p>This means you have not logged in!</p>
+
+<% end %>
