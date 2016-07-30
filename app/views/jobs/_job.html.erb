@@ -1,5 +1,5 @@
 <li id="job-<%= job.id %>">
   <span class = "user"><%= link_to job.user.email, job.user %></span>
-  <span class = "post"><%= link_to job.content %></span>
-  <span class = "timestamp">Posted<%= time_ago_in_words(job.created_at) %> ago.</span>
+  <span class = "post"><%= job.content %></span>
+  <span class = "timestamp">Posted <%= time_ago_in_words(job.created_at) %> ago.</span>
 </li>

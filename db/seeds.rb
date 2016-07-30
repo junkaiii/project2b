@@ -20,9 +20,9 @@ User.create!(email: "junkaiii@gmail.com",
                             password_confirmation: password)
 end
 
-# # Faker (delete if not needed)
-# users = User.order(:created_at).take(6)
-# 50.times do
-#   content = Faker::Lorem.sentence(5)
-#   users.each { |user| user.jobs.create!(content: content) }
-# end
+# Faker (delete if not needed)
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.jobs.create!(content: content) }
+end
