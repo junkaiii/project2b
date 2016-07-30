@@ -16,6 +16,9 @@
         </li>
         <% if logged_in? %> <!-- Already logged in --->
           <li>
+            <%= link_to "New Job", new_job_path %>
+          </li>
+          <li>
             <%= link_to "Logout", logout_path, method: :delete %>
           </li>
         <% else %>
