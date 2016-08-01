@@ -1,0 +1,7 @@
+<%= form_for(@reviewpost, url: new_job_review_path(params[:job_id])) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+  </div>
+  <%= f.submit "Post" %>
+<% end %>

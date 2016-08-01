@@ -1,0 +1,19 @@
+<div>
+<p>
+  <strong>Job Description:</strong>
+  <%= @job.content %>
+</p>
+</div>
+
+<div>
+<% if @job.reviews.any? %>
+<h3>Reviews (<%= @job.reviews.count %>):</h3>
+<ol>
+  <%= render @reviews %>
+</ol>
+
+<%= will_paginate @reviews%>
+
+<% end %>
+
+</div>
