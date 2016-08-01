@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #log in
       log_in user
-      redirect_to user
       flash[:success] = 'Welcome!'
+      redirect_back_or root_url
 
     else
       #render error
