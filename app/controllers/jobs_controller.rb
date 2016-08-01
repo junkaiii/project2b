@@ -5,6 +5,14 @@ class JobsController < ApplicationController
     @job = current_user.jobs.build if logged_in?
   end
 
+  def show
+    @job = Job.find(params[:id])
+    @reviews = @job.reviews.paginate(page: params[:page])
+    @review = @job.reviews.build()
+
+
+  end
+
   def index
     @jobshow = Job.paginate(page: params[:page])
   end
