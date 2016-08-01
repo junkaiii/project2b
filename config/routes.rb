@@ -8,5 +8,15 @@ Rails.application.routes.draw do
   resources :users
   resources :jobs, only: [:new, :create, :destroy, :show]
   resources :reviews
+
+  resources :jobs do
+    resources :reviews
+  end
+
+  resources :users do
+    resources :reviews
+  end
+
+  post '/jobs/:id/reviews/new', to: 'reviews#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

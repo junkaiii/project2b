@@ -10,7 +10,6 @@ class JobsController < ApplicationController
     @reviews = @job.reviews.paginate(page: params[:page])
     @review = @job.reviews.build()
 
-
   end
 
   def index
@@ -25,6 +24,7 @@ class JobsController < ApplicationController
     else
       render :new
     end
+    
   end
 
   def destroy
