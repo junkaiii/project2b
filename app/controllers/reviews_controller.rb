@@ -1,25 +1,24 @@
 class ReviewsController < ApplicationController
-
+  before_action :find_job
+  before_action :job_creator, only: [:create]
 
   def index
-
   end
 
   def new
-    @reviewpost = Review.new
-
+    @review = Review.new
   end
 
   def create
-    @reviewpost = Review.new(review_params)
-    @reviewpost.user_id = current_user.id
-    @reviewpost.job_id = params[:id]
+    @review = Review.new(review_params)
+    @review.job_id = @job.id
+    @review.user_id = current_user.id
     # @reviewpost = @job.reviews.build(review_params)
-    if @reviewpost.save
-      flash[:success] = "Micropost created!"
-      redirect_to root_url
+    if @review.save
+      flash[:success] = "Review created!"
+      redirect_to @job
     else
-      render 'static_pages/home'
+      render 'static_pages/index'
     end
   end
 
@@ -35,5 +34,14 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:content, :user_id, :job_id)
     end
 
+    #finds job id within url
+    def find_job
+      @job = Job.find(params[:job_id])
+    end
 
+    # returns false if either review has been made or user is trying to post a review to a job he created
+    def job_creator
+      @job.reviews.empty? && @job.user.id != current_user.id
+    end
+    
 end

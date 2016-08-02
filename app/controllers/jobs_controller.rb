@@ -8,12 +8,10 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @reviews = @job.reviews.paginate(page: params[:page])
-    @review = @job.reviews.build()
-
   end
 
   def index
-    @jobshow = Job.paginate(page: params[:page])
+    @job = Job.paginate(page: params[:page])
   end
 
   def create
@@ -24,7 +22,7 @@ class JobsController < ApplicationController
     else
       render :new
     end
-    
+
   end
 
   def destroy
