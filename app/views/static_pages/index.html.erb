@@ -1,13 +1,15 @@
 <% if logged_in? %>
 <div>
-  <h2>All available Jobs:</h2>
-  <div>
-      <section>
-        <%= render @jobshow %>
-      </section>
-  </div>
+<%= form_tag(jobs_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Jobs" %>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
 </div>
-<%= will_paginate @jobshow%>
+<br>
+<div>
+<%= render @jobshow %>
+<%= will_paginate @jobshow %>
+</div>
 
 <% else %>
 

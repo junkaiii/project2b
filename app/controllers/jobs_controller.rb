@@ -10,8 +10,17 @@ class JobsController < ApplicationController
     @reviews = @job.reviews.paginate(page: params[:page])
   end
 
+  # def index
+  #   @jobs = Job.paginate(page: params[:page])
+  # end
+
   def index
-    @job = Job.paginate(page: params[:page])
+    @jobs = Job.paginate(page: params[:page])
+      if params[:search]
+        @jobs = Job.search(params[:search]).order("created_at DESC").paginate(page: params[:page])
+      else
+        @jobs = Job.all.order('created_at DESC').paginate(page: params[:page])
+    end
   end
 
   def create

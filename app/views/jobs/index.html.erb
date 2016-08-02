@@ -1,9 +1,6 @@
-<div>
-  <h2>All available Jobs:</h2>
-  <div>
-      <section>
-        <%= render @job %>
-      </section>
-  </div>
-</div>
-<%= will_paginate @job %>
+<% if @jobs.present? %>
+  <%= render @jobs %>
+  <%= will_paginate @jobs %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>
