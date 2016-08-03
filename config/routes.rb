@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     resources :bids
   end
 
-  post '/jobs/:id/reviews/new', to: 'reviews#create'
+  # post '/jobs/:id/reviews/new', to: 'reviews#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

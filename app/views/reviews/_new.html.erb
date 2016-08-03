@@ -1,10 +1,10 @@
 <%# if @job.reviews.empty? && @job.user.id != current_user.id %>
-<% if job_creator?(@job) %>
+<% if job_creator?(Job.find(params[:id])) %>
 
     <%= form_for([@job, @job.reviews.build]) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div>
-      <%= f.text_area :content, placeholder: "Create new job..." %>
+      <%= f.text_area :content, placeholder: "Create new review..." %>
     </div>
     <%= f.submit "Post" %>
 
