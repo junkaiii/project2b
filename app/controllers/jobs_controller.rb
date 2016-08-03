@@ -9,6 +9,8 @@ class JobsController < ApplicationController
 
   def show
       @job = Job.find(params[:id])
+      @review = @job.reviews.build
+      @bid = @job.bids.build
       @reviews = @job.reviews.paginate(page: params[:page])
   end
 
