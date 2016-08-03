@@ -12,7 +12,10 @@
     <%= render @users %>
   <tbody>
     <% @users.each do |user| %>
-
+    <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "Delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+                                  <% end %>
     <% end %>
   </tbody>
 </table>

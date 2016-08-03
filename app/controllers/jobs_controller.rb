@@ -31,8 +31,20 @@ class JobsController < ApplicationController
     else
       render :new
     end
-
   end
+
+  def update
+    @job = Job.find(params[:id])
+#    @job.if_sold = params[:if_sold]
+    if @job.update(job_params)
+      flash[:success] = "Job has been marked as completed"
+      redirect_to @job
+    else
+      flash[:danger] = "Something went wrong!"
+      redirect_to @job
+    end
+  end
+
 
   def destroy
   end
@@ -40,7 +52,7 @@ class JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:content)
+      params.require(:job).permit(:content, :if_sold)
     end
 
 end
