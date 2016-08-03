@@ -49,7 +49,7 @@ class JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:content, :if_sold)
+      params.require(:job).permit(:content, :if_completed)
     end
 
     # def find_job
@@ -57,6 +57,7 @@ class JobsController < ApplicationController
     # end
 
     def job_maker
+      @job = Job.find(params[:id])
       @job.user.id == current_user.id
     end
 
