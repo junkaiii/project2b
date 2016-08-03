@@ -43,5 +43,5 @@ class ReviewsController < ApplicationController
     def job_creator
       @job.reviews.empty? && @job.user.id != current_user.id
     end
-    
+
 end

@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20160803032556) do
   create_table "jobs", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "if_sold"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "if_completed"
     t.index ["user_id", "created_at"], name: "index_jobs_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end

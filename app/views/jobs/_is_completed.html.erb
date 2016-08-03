@@ -1,0 +1,6 @@
+<% if job_maker?(@job) && @job.if_completed != true %>
+<%= form_for(@job) do |f| %>
+  <%= f.hidden_field(:if_completed, :value => "true") %>
+  <%= f.submit "Job Completed" %>
+<% end %>
+<% end %>

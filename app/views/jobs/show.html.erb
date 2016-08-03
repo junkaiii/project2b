@@ -19,9 +19,10 @@
   </ol>
   <%= will_paginate @reviews%>
   <% end %>
+  <div>
   <%= render "reviews/new" %>
-  <%= form_for(@job) do |f| %>
-    <%= f.hidden_field(:if_sold, :value => "true") %>
-    <%= f.submit "Job Completed" %>
-  <% end %>
+  </div>
+  <div>
+  <%= render "jobs/is_completed" %>
+  </div>
 </div>

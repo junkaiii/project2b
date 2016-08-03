@@ -1,18 +1,16 @@
 class JobsController < ApplicationController
+  # before_action :find_job
   before_action :logged_in_user, only: [:index, :new, :create, :destroy]
+  before_action :job_maker, only: [:update]
 
   def new
     @job = current_user.jobs.build if logged_in?
   end
 
   def show
-    @job = Job.find(params[:id])
-    @reviews = @job.reviews.paginate(page: params[:page])
+      @job = Job.find(params[:id])
+      @reviews = @job.reviews.paginate(page: params[:page])
   end
-
-  # def index
-  #   @jobs = Job.paginate(page: params[:page])
-  # end
 
   def index
     @jobs = Job.paginate(page: params[:page])
@@ -35,7 +33,6 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-#    @job.if_sold = params[:if_sold]
     if @job.update(job_params)
       flash[:success] = "Job has been marked as completed"
       redirect_to @job
@@ -53,6 +50,14 @@ class JobsController < ApplicationController
 
     def job_params
       params.require(:job).permit(:content, :if_sold)
+    end
+
+    # def find_job
+    #   @job = Job.find(params[:id])
+    # end
+
+    def job_maker
+      @job.user.id == current_user.id
     end
 
 end
