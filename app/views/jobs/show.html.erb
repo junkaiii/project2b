@@ -4,20 +4,21 @@
   <%= @job.content %>
 </p>
 </div>
+<div>
+<p>
+<strong>Posted By:</strong>
+<%= @job.user.email %>
+</p>
+</div>
 
 <div>
-<% if @job.reviews.any? %>
-<h3>Reviews (<%= @job.reviews.count %>):</h3>
-<ol>
-  <%= render @reviews %>
-</ol>
-
-<%= will_paginate @reviews%>
-
-<% end %>
-
-
-<%= render "reviews/new" %>
-
+  <% if @job.reviews.any? %>
+  <h3>Reviews (<%= @job.reviews.count %>):</h3>
+  <ol>
+    <%= render @reviews %>
+  </ol>
+  <%= will_paginate @reviews%>
+  <% end %>
+  <%= render "reviews/new" %>
 
 </div>

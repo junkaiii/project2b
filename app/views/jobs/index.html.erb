@@ -1,15 +1,15 @@
 <div>
-<%= form_tag(jobs_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Jobs" %>
-<%= submit_tag "Search", :name => nil %>
-<% end %>
+  <%= form_tag(jobs_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Jobs" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
 </div>
 <br>
 <div>
-<% if @jobs.present? %>
-  <%= render @jobs %>
-<% else %>
-  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
-<% end %>
+  <% if @jobs.present? %>
+    <%= render @jobs %>
+  <% else %>
+    <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
   <%= will_paginate @jobs %>
 </div>
