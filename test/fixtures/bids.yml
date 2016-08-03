@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bids: 1.5
+  user: 
+  jobs: 
+
+two:
+  bids: 1.5
+  user: 
+  jobs: 
