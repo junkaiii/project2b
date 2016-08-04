@@ -1,0 +1,9 @@
+<h3>Bids:</h3>
+<li>
+  <% @bids.each do |n| %>
+  <strong>Bidder:</strong>
+  <span><%= link_to n.user.email, n.user %></span>
+  <strong>Amount: </strong>
+  <span><%= n.bids %></span>
+  <% end %>
+</li>

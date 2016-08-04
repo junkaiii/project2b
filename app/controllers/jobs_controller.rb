@@ -12,6 +12,9 @@ class JobsController < ApplicationController
       @review = @job.reviews.build
       @bid = @job.bids.build
       @reviews = @job.reviews.paginate(page: params[:page])
+
+
+      @bids = @job.bids.includes(:user)
   end
 
   def index
@@ -47,6 +50,8 @@ class JobsController < ApplicationController
 
   def destroy
   end
+
+
 
   private
 

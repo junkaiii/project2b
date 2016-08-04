@@ -2,6 +2,7 @@ class BidsController < ApplicationController
   before_action :find_job
 
   def index
+    @bids = @job.bids
   end
 
   def create
@@ -25,6 +26,8 @@ class BidsController < ApplicationController
 
   def destroy
   end
+
+
 
 
 
