@@ -1,5 +1,6 @@
 class BidsController < ApplicationController
   before_action :find_job
+  before_action :possible_bid, only: [:update]
 
   def index
     @bids = @job.bids
@@ -31,10 +32,10 @@ class BidsController < ApplicationController
     # @bid.user_id = current_user.id
     if @bid.update(bid_params)
       flash[:success] = "Bid selected!"
-      redirect_to @job
-    else
+      redirect_to :back
+      else
       flash[:error] = "Bid is not selected!"
-      redirect_to @job
+      redirect_to :back
       # render :template => 'jobs/show'
     end
   # end
@@ -52,6 +53,11 @@ class BidsController < ApplicationController
 
   def find_job
     @job = Job.find(params[:job_id])
+  end
+
+  def possible_bid
+    @job = Job.find(params[:id])
+    @job.user.id == current_user.id && @job.if_completed != true && Bid.find_by(job_id:(Job.find(params[:id])), chosen_bid: true).nil?
   end
 
 end
