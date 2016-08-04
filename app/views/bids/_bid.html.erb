@@ -6,7 +6,7 @@
   <strong>Amount: </strong>
   <span>$<%= n.amount %></span>
   <span>
-  <% if @job.user.id != current_user.id && @job.if_completed != true && Bid.find_by(job_id:(Job.find(params[:id])), chosen_bid: true).nil? %>
+  <% if @job.user.id == current_user.id && @job.if_completed != true && Bid.find_by(job_id:(Job.find(params[:id])), chosen_bid: true).nil? %>
   <%= form_for([@job, n],html:{method:"patch"}) do |f| %>
   <%= f.hidden_field :chosen_bid, value: "true" %>
   <%= f.submit "Select Bid!" %>
