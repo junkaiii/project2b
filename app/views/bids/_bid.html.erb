@@ -1,0 +1,16 @@
+<h3>Bids:</h3>
+<% @bids.each do |n| %>
+<li>
+
+  <strong>Bidder:</strong>
+  <span><%= link_to n.user.email, n.user %></span>
+  <strong>Amount: </strong>
+  <span>$<%= n.amount %></span>
+  <span>
+  <%= form_for([@job, n],html:{method:"patch"}) do |f| %>
+  <%= f.hidden_field :chosen_bid, value: "true" %>
+  <%= f.submit "Select Bid!" %>
+  <% end %>
+  </span>
+  <% end %>
+</li>

@@ -24,17 +24,30 @@ class BidsController < ApplicationController
   # end
   end
 
-  def destroy
+  def update
+    # @job = Job.find(params[:job_id])
+    @bid = Bid.find(params[:id])
+    # @bid.job_id = @job.id
+    # @bid.user_id = current_user.id
+    if @bid.update(bid_params)
+      flash[:success] = "Bid selected!"
+      redirect_to @job
+    else
+      flash[:error] = "Bid is not selected!"
+      redirect_to @job
+      # render :template => 'jobs/show'
+    end
+  # end
   end
 
 
-
-
+  def destroy
+  end
 
   private
 
   def bid_params
-    params.require(:bid).permit(:bids, :user_id, :job_id)
+    params.require(:bid).permit(:amount, :user_id, :job_id, :chosen_bid)
   end
 
   def find_job

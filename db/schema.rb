@@ -13,9 +13,10 @@
 ActiveRecord::Schema.define(version: 20160803095051) do
 
   create_table "bids", force: :cascade do |t|
-    t.float    "bids"
+    t.float    "amount"
     t.integer  "job_id"
     t.integer  "user_id"
+    t.boolean  "chosen_bid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id", "created_at"], name: "index_bids_on_job_id_and_created_at"

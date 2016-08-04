@@ -8,7 +8,7 @@ not? -->
 <%= form_for([@job, @job.bids.build]) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <div>
-  <%= f.number_field :bids, step: 0.01, placeholder: "Enter your bid" %>
+  <%= f.number_field :amount, step: 0.01, placeholder: "Enter your bid" %>
 </div>
 <%= f.submit "Bid!" %>
 <% end %>
