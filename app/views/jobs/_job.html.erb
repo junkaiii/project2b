@@ -1,4 +1,5 @@
 <li id="job-<%= job.id %>">
+  <img src="http://placehold.it/500x500" alt=""/>
   <span class = "post"><%= link_to job.content, job %></span>
   <span class = "timestamp">Posted by <%= link_to job.user.email, job.user %> <%= time_ago_in_words(job.created_at) %> ago.</span>
 </li>

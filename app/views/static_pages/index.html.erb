@@ -1,21 +1,42 @@
 <% if logged_in? %>
-<div>
+<div class="job-search">
 <%= form_tag(jobs_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Jobs" %>
-<%= submit_tag "Search", :name => nil %>
+<%= submit_tag "Search", :name => nil, id: "job_search_btn" %>
 <% end %>
 </div>
 <br>
+<div class="job-container">
 <div>
 <%= render @jobshow %>
 <%= will_paginate @jobshow %>
 </div>
+</div>
+
 
 <% else %>
 
-<div class ="hero">
+<div class= "hero">
   <h1>Welcome!</h1>
   <p>Save time and have someone queue for you.</p>
 </div>
 
+<div class="login-bg invisible">
+</div>
+<div class="login-container invisible">
+<div class= "login">
+<%= form_for(:session, url: login_path) do |f| %>
+
+  <%# f.label :email %>
+  <%= f.email_field :email %>
+
+  <%# f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Login"%>
+<% end %>
+
+<p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+</div>
+</div>
 <% end %>

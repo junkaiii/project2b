@@ -1,10 +1,11 @@
-<div>
+<div class="job-search">
   <%= form_tag(jobs_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Jobs" %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag "Search", :name => nil, id: "job_search_btn" %>
   <% end %>
 </div>
 <br>
+<div class="job-container">
 <div>
   <% if @jobs.present? %>
     <%= render @jobs %>
@@ -12,4 +13,6 @@
     <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
   <% end %>
   <%= will_paginate @jobs %>
+</div>
+
 </div>
